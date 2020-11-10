@@ -1,0 +1,25 @@
+{
+  "name": "pw-keeper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "private": true,
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "json-server": "^0.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sina-Sche/pw-keeper.git"
+  },
+  "author": "Sina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sina-Sche/pw-keeper/issues"
+  },
+  "homepage": "https://github.com/Sina-Sche/pw-keeper#readme"
+}

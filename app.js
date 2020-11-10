@@ -1,21 +1,41 @@
-const args = process.argv.slice(2);
-const passwordName = args[0];
-console.log(`You will get your ${passwordName} password`);
+const inquirer = require("inquirer");
+const fs = require("fs");
 
-wifi = 5678;
-bank = 1234;
-if (passwordName === "wifi") {
-  console.log(wifi);
-} else {
-  console.log("unknown password");
-}
+console.log("Welcome to your Password Manager");
 
-if (passwordName === "bank") {
-  console.log(bank);
-} else {
-  console.log("unknown password");
-}
-// const inquirer = require("inquirer");
-// inquirer.prompt([["?"], "What is your password?"]).then((answers) => {
-//   alert("Yay! Welcome to the passwords!");
-// });
+const showPassword = () => {
+  const args = process.argv.slice(2);
+  const passwordName = args[0];
+
+  console.log(`Here is your password for your ${passwordName} account`);
+
+  const pwSafeJSON = fs.readFileSync("./db.json", "utf8");
+
+  const pwSafe = JSON.parse(pwSafeJSON);
+  const pw = pwSafe[passwordName];
+  if (passwordName) {
+    console.log(`The password is ${pw}`), process.exit(1);
+    return;
+  } else {
+    console.log("unknown password");
+  }
+};
+const loginPw = "0000";
+const question = [
+  {
+    type: "password",
+    name: "master_password",
+    message: "Please enter the master password",
+    mask: "*",
+
+    validate: async function (value) {
+      if (value == loginPw) {
+        return "Correct Password", await showPassword();
+      } else {
+        console.error("You better leave NOW!👊");
+      }
+    },
+  },
+];
+
+inquirer.prompt(question);
