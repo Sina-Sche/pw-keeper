@@ -1,16 +1,21 @@
-process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`);
-});
-
 const args = process.argv.slice(2);
-args[0];
+const passwordName = args[0];
+console.log(`You will get your ${passwordName} password`);
 
 wifi = 5678;
-console.log(wifi);
 bank = 1234;
-console.log(bank);
+if (passwordName === "wifi") {
+  console.log(wifi);
+} else {
+  console.log("unknown password");
+}
 
-const inquirer = require("inquirer");
-inquirer.prompt([["?"], "What is your password?"]).then((answers) => {
-  alert("Yay! Welcome to the passwords!");
-});
+if (passwordName === "bank") {
+  console.log(bank);
+} else {
+  console.log("unknown password");
+}
+// const inquirer = require("inquirer");
+// inquirer.prompt([["?"], "What is your password?"]).then((answers) => {
+//   alert("Yay! Welcome to the passwords!");
+// });
